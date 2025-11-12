@@ -34,7 +34,7 @@ function changeBackground(){
             btn.textContent = "Phát nhạc";
         } else {
             btn.classList.add("playing");
-            btn.textContent = "Tạm ngưng nhạc";
+            btn.textContent = "Ngưng nhạc";
         }
     }
 })();
