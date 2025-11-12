@@ -1,0 +1,176 @@
+body {
+  margin: 0;
+  background: url("images/background1.jpg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #fff;
+}
+
+#content div {
+  position: absolute;
+}
+
+/* Vị trí xuất phát */
+#shark  { left: 80px;  top: 220px; }
+#turtle { left: 720px; top: 420px; }
+
+#faintSchool    { left: 40px;  top: 300px; }
+#goldFishSchool { left: 700px; top: 340px; }
+
+#diver1 { left: 200px; top: 100px; }
+#diver2 { left: 400px; top: 150px; }
+#diver3 { left: 600px; top: 200px; }
+
+/* JS quản lý chuyển động: tắt animation CSS để tránh xung đột */
+#shark, #turtle, #diver1, #diver2, #diver3, #faintSchool, #goldFishSchool {
+  animation: none !important;
+}
+
+/* Bong bóng */
+.bubble {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  animation: rise 10s linear infinite;
+}
+@keyframes rise {
+  0%   { bottom: 0; opacity: 0; transform: translateX(0); }
+  20%  { opacity: 1; }
+  50%  { transform: translateX(-20px); }
+  70%  { transform: translateX(20px); }
+  100% { bottom: 100vh; opacity: 0; }
+}
+
+/* Controls centered at top with play-group and music controls to the right */
+#controls{
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  pointer-events: auto;
+}
+.controls-center{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0,0,0,0.18);
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px);
+}
+
+/* play button + select/volume group */
+.play-group{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Buttons */
+#changeBgBtn, #playPauseBtn{
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg,#0077b6,#00b4d8);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.35);
+}
+#playPauseBtn.playing{
+  background: linear-gradient(90deg,#06b6d4,#0891b2);
+  box-shadow: 0 6px 24px rgba(6,166,199,0.24);
+}
+
+/* music controls inline, to the right of play button */
+#musicControls{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+.mc-label{
+  font-size: 13px;
+  color: #e6f7ff;
+  margin-right: 4px;
+  white-space: nowrap;
+}
+.mc-select{
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  min-width: 220px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round' opacity='0.9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px 8px;
+  padding-right: 34px;
+}
+.mc-select:focus{
+  outline: 2px solid rgba(0,162,255,0.15);
+  box-shadow: 0 0 10px rgba(0,162,255,0.06);
+}
+
+/* Slider (volume) styles */
+.mc-range{
+  width: 140px;
+  height: 6px;
+  background: linear-gradient(90deg,#00b4d8,#0077b6);
+  border-radius: 6px;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  margin-left: 4px;
+}
+.mc-range::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  cursor: pointer;
+}
+.mc-range::-moz-range-thumb{
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+/* Display value */
+.mc-value{
+  min-width: 44px;
+  text-align: right;
+  color: #e6f7ff;
+  font-size: 13px;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 520px){
+  .controls-center{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .play-group{
+    justify-content: space-between;
+  }
+  #musicControls{
+    width:100%;
+    justify-content: space-between;
+  }
+}

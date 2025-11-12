@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Hồ cá vui nhộn</title>
+  <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+  <div id="content">
+    <!-- Cá mập -->
+    <div id="shark"><img src="images/shark.png" alt="shark"></div>
+    <!-- Rùa -->
+    <div id="turtle"><img src="images/turtle.png" alt="turtle"></div>
+    <!-- Thợ lặn -->
+    <div id="diver1"><img src="images/diver1.png" alt="diver1"></div>
+    <div id="diver2"><img src="images/diver2.png" alt="diver2"></div>
+    <div id="diver3"><img src="images/diver3.png" alt="diver3"></div>
+    <!-- Đàn cá -->
+    <div id="faintSchool"><img src="images/faintSchool.png" alt="faint fish"></div>
+    <div id="goldFishSchool"><img src="images/goldFishSchool.png" alt="gold fish"></div>
+  </div>
+
+  <!-- Nút điều khiển -->
+  <div id="controls">
+    <div class="controls-center">
+      <button id="changeBgBtn" onclick="changeBackground()">Đổi nền</button>
+
+      <div class="play-group">
+        <button id="playPauseBtn" onclick="toggleMusic()">Phát nhạc</button>
+
+        <div id="musicControls">
+          <label for="musicSelect" class="mc-label">Chọn nhạc</label>
+          <select id="musicSelect" onchange="changeMusic()" class="mc-select">
+            <option value="music/Low G _ In Love (ft. JustaTee) _ ‘L2K’ The Album.mp3">Low G _ In Love (ft. JustaTee)</option>
+            <option value="music/TOULIVER X JUSTATEE - FORGET ABOUT HER (OFFICIAL MV).mp3">TOULIVER X JUSTATEE - FORGET ABOUT HER</option>
+            <option value="music/XXXTENTACION - Jocelyn Flores (Audio).mp3">XXXTENTACION - Jocelyn Flores</option>
+          </select>
+
+          <label for="volumeRange" class="mc-label">Âm lượng</label>
+          <input id="volumeRange" class="mc-range" type="range" min="0" max="1" step="0.01" value="0.5" oninput="changeVolume(event)" />
+          <span id="volumeValue" class="mc-value">50%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bong bóng -->
+  <div id="bubbles">
+  <!-- Các bong bóng sẽ được tạo bằng JavaScript -->
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="music/ocean.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
