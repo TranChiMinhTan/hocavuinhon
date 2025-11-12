@@ -45,7 +45,7 @@ function updatePlayButton(isPlaying){
     if(!btn) return;
     if(isPlaying){
         btn.classList.add("playing");
-        btn.textContent = "Tạm ngưng nhạc";
+        btn.textContent = "Ngưng nhạc";
     } else {
         btn.classList.remove("playing");
         btn.textContent = "Phát nhạc";
